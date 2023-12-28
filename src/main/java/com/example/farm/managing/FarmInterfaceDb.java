@@ -11,4 +11,8 @@ public interface FarmInterfaceDb extends JpaRepository<FarmDataModel,Long> {
     FarmDataModel farmDataModel(Long id);
     @Query("SELECT f FROM farmnew f")
     List<FarmDataModel> all();
+
+    @Query("SELECT p from farmnew p WHERE p.id = ?1")
+    FarmDataModel findProductById(Long id);
+
 }

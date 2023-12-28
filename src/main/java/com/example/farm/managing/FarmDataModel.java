@@ -12,6 +12,7 @@ public class FarmDataModel {
 
     }
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
             @Column(
@@ -20,16 +21,13 @@ public class FarmDataModel {
                     unique = true
             )
     Long id;
+
     @Column(
             name = "product",
             columnDefinition = "TEXT"
     )
     String product;
-    @Column(
-            name = "price",
-            columnDefinition = "TEXT"
-    )
-
+    @Column(name = "price", columnDefinition = "TEXT")
     String pricePerKg;
     @Column(
             name = "amount_per_kg",
