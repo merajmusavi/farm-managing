@@ -1,6 +1,8 @@
 package com.example.farm.managing;
 
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
@@ -14,5 +16,10 @@ public interface FarmInterfaceDb extends JpaRepository<FarmDataModel,Long> {
 
     @Query("SELECT p from farmnew p WHERE p.id = ?1")
     FarmDataModel findProductById(Long id);
+
+    @Transactional
+    @Modifying
+    @Query("DELETE FROM farmnew p WHERE p.id = ?1")
+    void deleteProductById(Long id);
 
 }

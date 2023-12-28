@@ -42,7 +42,7 @@ public class FarmService {
     }
 
     public void deleteUser(Long id) {
-    interfaceDb.deleteById(id);
+    interfaceDb.deleteProductById(id);
     }
 @Transactional
     public void rangeUpdate(Map<Long, String> map) {
