@@ -1,6 +1,5 @@
-package com.example.farm.managing;
+package com.example.farm.managing.farm;
 
-import com.github.javafaker.Faker;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

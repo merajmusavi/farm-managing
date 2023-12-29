@@ -1,4 +1,4 @@
-package com.example.farm.managing;
+package com.example.farm.managing.farm;
 
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,5 +1,6 @@
-package com.example.farm.managing;
+package com.example.farm.managing.farm;
 
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -48,6 +49,15 @@ public class FarmController {
         farmService.rangeUpdate(map);
     }
 
+    @GetMapping("/allDesc")
+    List<FarmDataModel> farmDataModels(){
+        return farmService.PriceASC();
+    }
+
+    @GetMapping("/page")
+    Page<FarmDataModel> farmDataModelPage(){
+        return farmService.farmDataModelPage();
+    }
 
 
 
