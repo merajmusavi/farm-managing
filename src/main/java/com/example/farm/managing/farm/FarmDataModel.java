@@ -1,5 +1,6 @@
 package com.example.farm.managing.farm;
 
+import com.example.farm.managing.customer.CustomerIdEntity;
 import jakarta.persistence.*;
 
 @Entity(name = "farmnew")
@@ -8,18 +9,18 @@ import jakarta.persistence.*;
 )
 
 public class FarmDataModel {
-    public FarmDataModel(){
+    public FarmDataModel() {
 
     }
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-            @Column(
-                    name = "id",
-                    nullable = false,
-                    unique = true
-            )
+    @Column(
+            name = "id",
+            nullable = false,
+            unique = true
+    )
     Long id;
 
     @Column(
@@ -35,6 +36,16 @@ public class FarmDataModel {
     )
 
     String amountPerKg;
+    @OneToOne(mappedBy = "farmDataModel")
+    private CustomerIdEntity customerIdEntity;
+
+    public CustomerIdEntity getCustomerIdEntity() {
+        return customerIdEntity;
+    }
+
+    public void setCustomerIdEntity(CustomerIdEntity customerIdEntity) {
+        this.customerIdEntity = customerIdEntity;
+    }
 
     public Long getId() {
         return id;
@@ -68,7 +79,7 @@ public class FarmDataModel {
         this.amountPerKg = amountPerKg;
     }
 
-    public FarmDataModel( String product, String pricePerKg, String amountPerKg) {
+    public FarmDataModel(String product, String pricePerKg, String amountPerKg) {
         this.product = product;
         this.pricePerKg = pricePerKg;
         this.amountPerKg = amountPerKg;

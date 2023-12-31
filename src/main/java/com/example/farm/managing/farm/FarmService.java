@@ -1,5 +1,7 @@
 package com.example.farm.managing.farm;
 
+import com.example.farm.managing.customer.CustomerCardRepo;
+import com.example.farm.managing.customer.CustomerIdEntity;
 import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -8,14 +10,18 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
 public class FarmService {
     FarmInterfaceDb interfaceDb;
+    CustomerCardRepo customerCardRepo;
 
-    public FarmService(FarmInterfaceDb farmInterfaceDb) {
+
+    public FarmService(FarmInterfaceDb farmInterfaceDb,CustomerCardRepo customerCardRepo) {
         this.interfaceDb = farmInterfaceDb;
+        this.customerCardRepo = customerCardRepo;
     }
 
 
@@ -79,4 +85,14 @@ public class FarmService {
     }
 
 
+    void SaveCustomerWithProduct(CustomerIdEntity customerIdEntity){
+        customerCardRepo.save(customerIdEntity);
+
+    }
+
+
+    public Optional<String> findUByCustomerIdCard(Long id) {
+
+       return customerCardRepo.customerIdEntity(id);
+    }
 }
