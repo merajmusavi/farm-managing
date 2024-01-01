@@ -36,7 +36,8 @@ public class FarmDataModel {
     )
 
     String amountPerKg;
-    @OneToOne(mappedBy = "farmDataModel")
+    @OneToOne(mappedBy = "farmDataModel",
+    orphanRemoval = true)
     private CustomerIdEntity customerIdEntity;
 
     public CustomerIdEntity getCustomerIdEntity() {

@@ -11,4 +11,5 @@ public interface CustomerCardRepo extends JpaRepository<CustomerIdEntity,Long> {
     Optional<String> customerIdEntity(Long id);
 
 
+
 }
