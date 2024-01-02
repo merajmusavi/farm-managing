@@ -3,6 +3,9 @@ package com.example.farm.managing.seller;
 import com.example.farm.managing.store.Store;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity(name = "sellerEntity")
 @Table(name = "sellerNew")
 public class Seller {
@@ -15,11 +18,29 @@ public class Seller {
     @Column(name = "name")
     String name;
 
-public Seller(){
+    @OneToMany(mappedBy = "seller",
+            orphanRemoval = true,
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    List<Store> list = new ArrayList<>();
 
-}
+    public Seller() {
+
+    }
 
 
+    public void AddStore(Store store){
+        if (!list.contains(store)){
+            list.add(store);
+            store.setSeller(this);
+        }
+    }
+
+    public void removeStore(Store store){
+        if (list.contains(store)){
+            list.remove(store);
+            store.setSeller(null);
+        }
+    }
     public Seller(String name) {
         this.name = name;
     }
@@ -39,7 +60,6 @@ public Seller(){
     public void setName(String name) {
         this.name = name;
     }
-
 
 
     @Override
