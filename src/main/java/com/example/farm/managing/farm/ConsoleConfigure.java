@@ -2,6 +2,10 @@ package com.example.farm.managing.farm;
 
 import com.example.farm.managing.customer.CustomerCardRepo;
 import com.example.farm.managing.customer.CustomerIdEntity;
+import com.example.farm.managing.seller.Seller;
+import com.example.farm.managing.seller.SellerRep;
+import com.example.farm.managing.store.Store;
+import com.example.farm.managing.store.StoreRepo;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,13 +14,16 @@ import org.springframework.context.annotation.Configuration;
 public class ConsoleConfigure {
 
     @Bean
-    CommandLineRunner commandLineRunner(FarmInterfaceDb farmInterfaceDb, CustomerCardRepo customerCardRepo) {
+    CommandLineRunner commandLineRunner(FarmInterfaceDb farmInterfaceDb, CustomerCardRepo customerCardRepo, SellerRep sellerRep, StoreRepo storeRepo) {
 
         return args -> {
 
             CustomerIdEntity pineApple = new CustomerIdEntity("1234567892",
                     new FarmDataModel("pine apple", "34", "34"));
 
+
+            storeRepo.save(new Store("dfdsfs",new Seller("ahmad")));
+            System.out.println(sellerRep.findById(1L));
 //            Faker faker = new Faker();
 //
 //            for (int i = 0; i < 1001; i++) {
