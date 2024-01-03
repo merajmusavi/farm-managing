@@ -27,8 +27,7 @@ public class Seller {
 
     }
 
-
-    public void AddStore(Store store){
+    public void addStore(Store store){
         if (!list.contains(store)){
             list.add(store);
             store.setSeller(this);

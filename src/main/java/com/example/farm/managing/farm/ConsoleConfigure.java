@@ -21,8 +21,12 @@ public class ConsoleConfigure {
             CustomerIdEntity pineApple = new CustomerIdEntity("1234567892",
                     new FarmDataModel("pine apple", "34", "34"));
 
+            Seller ahmad = new Seller("ahmad");
 
-            storeRepo.save(new Store("dfdsfs",new Seller("ahmad")));
+            ahmad.addStore(new Store("ofogh kourosh"));
+
+
+            sellerRep.save(ahmad);
             System.out.println(sellerRep.findById(1L));
 //            Faker faker = new Faker();
 //

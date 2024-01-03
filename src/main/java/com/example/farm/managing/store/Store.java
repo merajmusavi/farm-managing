@@ -41,6 +41,9 @@ public class Store {
                     )
             )
     Seller seller;
+    public Store(String name){
+        this.name = name;
+    }
 
     public Store(){
 
